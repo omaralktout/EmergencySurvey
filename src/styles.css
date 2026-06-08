@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Cairo", Arial, sans-serif;
+  background: #f6fbf8;
+  color: #21302a;
+}
+
+button,
+textarea {
+  font-family: inherit;
+}
+
+.logo-bg {
+  background:
+    radial-gradient(circle at 30% 20%, rgba(8, 115, 63, 0.1), transparent 34%),
+    linear-gradient(135deg, #ffffff 0%, #f0f8f4 100%);
+}
+
+.question-card {
+  border: 1px solid #cfe3d7;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 14px 34px rgba(8, 115, 63, 0.055);
+}
+
+.option-button {
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.option-button:active {
+  transform: scale(0.98);
+}
+
+.stepper-scroll {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 0.35rem 0 0.1rem;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+
+.stepper-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.stepper-list {
+  display: flex;
+  direction: rtl;
+  min-width: max-content;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.stepper-item {
+  position: relative;
+  flex: 0 0 122px;
+  min-height: 104px;
+  padding: 0 0.35rem;
+  text-align: center;
+  scroll-snap-align: center;
+}
+
+.stepper-item::after {
+  content: "";
+  position: absolute;
+  top: 22px;
+  left: calc(-50% + 30px);
+  right: calc(50% + 30px);
+  height: 4px;
+  border-radius: 999px;
+  background: #c8e3d4;
+}
+
+.stepper-item:last-child::after {
+  display: none;
+}
+
+.stepper-item.connector-active::after {
+  background: #08733f;
+}
+
+.stepper-circle {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin: 0 auto;
+  border-radius: 999px;
+  border: 1.5px solid #b9dcc9;
+  background: #f8fffb;
+  color: #64766d;
+  font-size: 1rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.stepper-circle.done {
+  border-color: #08733f;
+  color: #08733f;
+  background: #f8fffb;
+}
+
+.stepper-circle.current {
+  border-color: #08733f;
+  background: #08733f;
+  color: #ffffff;
+}
+
+.stepper-title {
+  margin-top: 0.7rem;
+  color: #6d7b73;
+  font-size: 0.95rem;
+  font-weight: 900;
+  line-height: 1.35;
+  word-break: normal;
+}
+
+.stepper-title.active {
+  color: #08733f;
+}
+
+@media (min-width: 768px) {
+  .stepper-scroll {
+    overflow: visible;
+  }
+
+  .stepper-list {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .stepper-item {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 0 0.2rem;
+  }
+
+  .stepper-title {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .stepper-item {
+    flex-basis: 128px;
+  }
+}
